@@ -149,7 +149,8 @@ def main():
             ms = sum(price * size for price, size in ms_float) / sum(size for price, size in ms_float)
             wfc = sum(price * size for price, size in wfc_float) / sum(size for price, size in wfc_float)
             xlf = (3 * 1000 + 2 * gs + 3 * ms + 2 * wfc) // 10
- 
+        
+        print(message)
 
         if (curr_time - last_time >= 0.2):
             # Do buy bond stuff
@@ -157,8 +158,8 @@ def main():
             
             # From bond perspective: can have at most 100 - the amount we have
             # From cash perspective: can have at most 
-            bond_buy_max = int(min(100 - bond_exposure, (cash_balance + 30000) // 1000 - 1, 100) - 1)
-            bond_sell_max = int(min(bond_exposure - (-100)-1, 100))
+            bond_buy_max = int(min(100 - bond_exposure, (cash_balance + 30000) // 1000 - 1, 100))
+            bond_sell_max = int(min(bond_exposure - (-100), 100))
             
             buyBonds(exchange, 999, bond_buy_max)
             sellBonds(exchange, 1001, bond_sell_max)
